@@ -18,3 +18,12 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build -- --pathPrefix="/stac/" --historyMode=hash
+      - name: Zip distribution folder
+        run: zip -r dist.zip dist/
+      - name: Upload dist.zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-archive
+          path: dist.zip
+
+
