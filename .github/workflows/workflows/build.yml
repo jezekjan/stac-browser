@@ -1,0 +1,14 @@
+name: Build
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm run build -- --pathPrefix="/stac/" --historyMode=hash
