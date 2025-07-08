@@ -18,6 +18,14 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build -- --pathPrefix="/stac/" --historyMode=hash
+      - name: Delete dist/config.js
+        run: |
+          if [ -f dist/config.js ]; then
+            rm dist/config.js
+            echo "config.js removed from dist/"
+          else
+            echo "config.js not found in dist/"
+          fi
       - name: Zip distribution folder
         run: zip -r dist.zip dist/
       - name: Upload dist.zip as artifact
