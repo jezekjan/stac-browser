@@ -1,5 +1,8 @@
 name: Build
 on:
+  push:
+    branches:
+      - v3.3.5_vg
   workflow_dispatch:
 
 jobs:
